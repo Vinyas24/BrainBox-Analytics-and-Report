@@ -1,42 +1,52 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset = "UTF-8" />
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrainBox</title>
-    <link rel = "stylesheet" href = "home.css" />
+    <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-<div class = "background"></div>
-<nav class = "navbar">
-    <div class = "logo">BrainBox</div>
-    <ul class = "nav-links">
-        <li><a href = "#">Home</a></li>
-        <li><a href = "#">My Papers</a></li>
-        <li><a href = "#">Profile</a></li>
-        <li><a href = "#">Logout</a></li>
+<div class="background"></div>
+
+<nav class="navbar">
+    <div class="logo">BrainBox</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">My Papers</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Logout</a></li>
     </ul>
 </nav>
-<div class = "search-container">
-    <input type = "text" placeholder = "Search papers..." />
-    <button>Search</button>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search papers..." />
+    <button onclick="searchPapers()">Search</button>
 </div>
 
-<div class = "papers-container">
+<div class="papers-container">
     <h2>Available Papers</h2>
-    <div class = "paper-item">
-        <h3>Deep Learning Fundamentals</h3>
-        <p>Views: 124 | Edits: 5 | Contributors: 3</p>
-    </div>
-    <div class = "paper-item">
-        <h3>Data Structures and Algorithms</h3>
-        <p>Views: 250 | Edits: 12 | Contributors: 6</p>
-    </div>
-    <div class = "paper-item">
-        <h3>Operating Systems Concepts</h3>
-        <p>Views: 175 | Edits: 7 | Contributors: 4</p>
-    </div>
-
+    <div id="papersList"></div>
 </div>
+
+<!-- ✅ Edit Modal -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Edit Paper</h2>
+        <input type="hidden" id="editPaperId" />
+        <div>
+            <label>Content:</label><br>
+            <textarea id="editContent" rows="6"></textarea>
+        </div>
+        <div>
+            <label>Contributor:</label><br>
+            <input type="text" id="editContributor" />
+        </div>
+        <button onclick="saveEdit()">Save</button>
+    </div>
+</div>
+
+<script src="home.js"></script>
 </body>
 </html>
