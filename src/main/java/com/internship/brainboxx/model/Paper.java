@@ -2,6 +2,7 @@ package com.internship.brainboxx.model;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "papers")
@@ -16,13 +17,20 @@ public class Paper {
     @Column(columnDefinition = "TEXT")
     private String content;
 
-    private int view_count;
-    private int edit_count;
+    @Column(name = "view_count")
+    private int viewCount;
+
+    @Column(name = "edit_count")
+    private int editCount;
+
     private String contributor;
+
+    @CreationTimestamp
     private Timestamp created_at;
+
     private Timestamp updated_at;
 
-    // ===== Getters and Setters =====
+    // ===== GETTERS AND SETTERS =====
 
     public int getId() {
         return id;
@@ -48,20 +56,20 @@ public class Paper {
         this.content = content;
     }
 
-    public int getView_count() {
-        return view_count;
+    public int getViewCount() {
+        return viewCount;
     }
 
-    public void setView_count(int view_count) {
-        this.view_count = view_count;
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 
-    public int getEdit_count() {
-        return edit_count;
+    public int getEditCount() {
+        return editCount;
     }
 
-    public void setEdit_count(int edit_count) {
-        this.edit_count = edit_count;
+    public void setEditCount(int editCount) {
+        this.editCount = editCount;
     }
 
     public String getContributor() {

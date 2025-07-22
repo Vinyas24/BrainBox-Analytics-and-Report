@@ -10,4 +10,6 @@ public interface PaperRepository extends JpaRepository<Paper, Integer> {
 
     // Search papers by title containing keyword (case-insensitive)
     List<Paper> findByTitleContainingIgnoreCase(String keyword);
+    List<Paper> findTop5ByOrderByViewCountDesc();
 }
+

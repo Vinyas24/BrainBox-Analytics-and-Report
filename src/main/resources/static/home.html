@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="home.css" />
 </head>
 <body>
-<div class="background"></div>
+
+<div class="background">
+    <svg class="curved-lines" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path class="line1" fill="none" stroke="rgba(100,0,0)" stroke-width="1"
+              d="M0,160 C 360,260 1080,60 1440,160" />
+        <path class="line2" fill="none" stroke="rgba(255,255,255)" stroke-width="1"
+              d="M0,200 C 360,100 1080,300 1440,200" />
+        <path class="line3" fill="none" stroke="rgba(0,0,0)" stroke-width="1"
+              d="M0,240 C 360,340 1080,140 1440,240" />
+    </svg>
+</div>
+
 
 <nav class="navbar">
     <div class="logo">BrainBox</div>
@@ -22,6 +33,10 @@
 <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search papers..." />
     <button onclick="searchPapers()">Search</button>
+    <div class="popular-searches-container">
+        <h3>Popular Searches</h3>
+        <ul id="popularList"></ul>
+    </div>
 </div>
 
 <div class="papers-container">
@@ -29,7 +44,7 @@
     <div id="papersList"></div>
 </div>
 
-<!-- ✅ Edit Modal -->
+<!--  Edit Modal -->
 <div id="editModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -46,6 +61,14 @@
         <button onclick="saveEdit()">Save</button>
     </div>
 </div>
+
+<div id="readModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeReadModal()">&times;</span>
+        <div id="readModalContent"></div>
+    </div>
+</div>
+
 
 <script src="home.js"></script>
 </body>

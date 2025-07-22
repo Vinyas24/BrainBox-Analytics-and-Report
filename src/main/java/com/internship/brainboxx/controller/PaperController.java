@@ -4,6 +4,8 @@ import com.internship.brainboxx.model.Paper;
 import com.internship.brainboxx.repository.PaperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -31,17 +33,32 @@ public class PaperController {
         Paper paper = paperRepository.findById(id).orElse(null);
         if (paper != null) {
             paper.setContent(updatedPaper.getContent());
-            paper.setEdit_count(paper.getEdit_count() + 1);
+            paper.setEditCount(paper.getEditCount() + 1);
             paper.setContributor(updatedPaper.getContributor());
+            paper.setUpdated_at(new Timestamp(System.currentTimeMillis()));
             paperRepository.save(paper);
         }
         return paper;
     }
 
-    // GET: Search papers by keyword
     @GetMapping("/search")
     public List<Paper> searchPapers(@RequestParam String keyword) {
         return paperRepository.findByTitleContainingIgnoreCase(keyword);
+    }
+
+    @GetMapping("/read/{id}")
+    public Paper readPaper(@PathVariable int id) {
+        Paper paper = paperRepository.findById(id).orElse(null);
+        if (paper != null) {
+            paper.setViewCount(paper.getViewCount() + 1);
+            paperRepository.save(paper);
+        }
+        return paper;
+    }
+
+    @GetMapping("/popular")
+    public List<Paper> getPopularPapers() {
+        return paperRepository.findTop5ByOrderByViewCountDesc();
     }
 
 }
