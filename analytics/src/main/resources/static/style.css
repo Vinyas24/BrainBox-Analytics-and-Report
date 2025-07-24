@@ -1,10 +1,14 @@
 :root {
-  --bg-color: #eaf4fb;
-  --text-color: #222;
-  --card-bg: #ffffff;
+  --bg-color: #070852;
+  --text-color: #f0f4ff;
+  --card-bg: #101940;
   --button-bg: #007acc;
-  --button-hover: #005fa3;
-  --accent-color: #005fa3;
+  --button-hover: #0094ff;
+  --accent-color: #00cfff;
+  --border-color: #2e3a60;
+  --table-header-bg: #007acc;
+  --table-row-bg: #18224d;
+  --table-row-hover: #22418a;
 }
 
 body {
@@ -20,37 +24,37 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 200px;
-  background: var(--card-bg);
+  width: 220px;
+  background: var(--button-bg);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.5);
 }
 
 .sidebar h2 {
   text-align: center;
-  color: var(--accent-color);
+  color: #fff;
 }
 
 .sidebar button {
-  background: var(--button-bg);
-  color: white;
+  background: var(--accent-color);
+  color: #000;
   border: 2px solid #000000;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .sidebar button:hover {
-  background: var(--button-hover);
+  background: #00e1ff;
 }
 
 .main-content {
-  margin-left: 220px;
+  margin-left: 240px;
   flex: 1;
   padding: 20px;
 }
@@ -59,11 +63,12 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--card-bg);
+  background: var(--button-bg);
   padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 .dashboard-header h1 {
@@ -79,9 +84,10 @@ body {
   display: none;
   background: var(--card-bg);
   padding: 20px;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin: 20px 10px 20px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .data-section.show {
@@ -100,38 +106,69 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background: var(--table-row-bg);
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 th {
-  background: var(--button-bg);
-  color: white;
+  background: var(--table-header-bg);
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: 2px solid #ffffff;
+  padding: 12px;
   text-align: center;
 }
 
+td {
+  font-size: 15px;
+  color: var(--text-color);
+}
+
 tr:nth-child(even) {
-  background: #f4f9fd;
+  background: #1b274f;
 }
 
 tr:hover {
-  background: #d6ecfb;
+  background: var(--table-row-hover);
+  cursor: pointer;
 }
 
-canvas.chart-canvas {
-  max-width: 800px;
-  margin: 0 auto;
+canvas#articleChart,
+canvas#contributorChart {
+  max-width: 1000px;
+  width: 95%;
+  height: 300px;
+  margin: 30px auto 10px auto;
   display: block;
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+canvas#searchChart {
+  max-width: 600px;
+  width: 90%;
+  height: 300px;
+  margin: 30px auto 10px auto;
+  display: block;
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid var(--button-bg);
+  border: 8px solid #222;
+  border-top: 8px solid var(--accent-color);
   border-radius: 50%;
   width: 60px;
   height: 60px;
